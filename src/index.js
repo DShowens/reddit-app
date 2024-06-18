@@ -10,6 +10,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+// Create my router as base.  Add additional components as needed
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
   )
 );
 
+// Create router provider and render the router listed above
 ReactDOM.createRoot(document.getElementById("app")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
