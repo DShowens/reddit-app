@@ -13,13 +13,15 @@ import {
 //Components & Pages
 import RootLayout from './components/RootLayout';
 import MultiCards from './components/MultiCards';
+import Card from './components/Card';
 
 // Create my router as base.  Add additional components as needed
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route path="/" element={<App />}>
-        <Route path="/" element={<MultiCards/>}/>
+        <Route path="/" element={<MultiCards />}/>
+        <Route path=":id" element={<Card />}/>
       </Route>
     </Route>
   )

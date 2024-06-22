@@ -1,6 +1,6 @@
 
 
-const tempPlaceholder = [{
+export const tempPlaceholder = [{
     title: "Temp1",
     author: "Me",
     likes: 5,
@@ -32,7 +32,7 @@ const tempPlaceholder = [{
     pic: "source location",
     id: 4
 }
-]
+];
 
 function MultiCards() {
     return (
