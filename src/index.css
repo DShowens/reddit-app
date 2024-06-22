@@ -11,3 +11,50 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  /* border: solid red 1px; */
+  margin: 0;
+}
+
+header {
+  background-color: hsla(0, 100%, 86%, 0.8); /* Why isn't this showing up */
+  border: solid red 1px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  min-height: 2rem;
+  padding: .5rem;
+}
+
+input, select, option {
+  max-height: 2rem;
+  align-self: center;
+  min-width: 10rem;
+}
+
+h2 {
+  padding: 3rem 1.5rem;
+}
+
+
+.multi-cards {
+  margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  /* border: solid red 1px; */
+}
+
+.card {
+  padding: .5rem;
+  min-width: 10rem;
+  max-width: 90%;
+  margin: 0 auto;
+  min-height: 20rem;
+  border: solid red 1px;
+}

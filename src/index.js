@@ -10,17 +10,23 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+//Components & Pages
+import RootLayout from './components/RootLayout';
+import MultiCards from './components/MultiCards';
+
 // Create my router as base.  Add additional components as needed
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      {/* <Route path="#" element={<Placeholder />} />  */}
+    <Route path="/" element={<RootLayout />}>
+      <Route path="/" element={<App />}>
+        <Route path="/" element={<MultiCards/>}/>
+      </Route>
     </Route>
   )
 );
 
 // Create router provider and render the router listed above
-ReactDOM.createRoot(document.getElementById("app")).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
