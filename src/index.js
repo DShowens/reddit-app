@@ -14,6 +14,8 @@ import {
 import RootLayout from './components/RootLayout';
 import MultiCards from './components/MultiCards';
 import Card from './components/Card';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 // Create my router as base.  Add additional components as needed
 const router = createBrowserRouter(
@@ -30,7 +32,9 @@ const router = createBrowserRouter(
 // Create router provider and render the router listed above
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 

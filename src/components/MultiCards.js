@@ -38,7 +38,7 @@ function MultiCards() {
     return (
         <div className="multi-cards">
             {tempPlaceholder.map(entry => (
-                <div className="card">
+                <div className="card" key={entry.id}>
                     <p>Title: {entry.title}</p>
                     <p>Author: {entry.author}</p>
                     <p>Likes = {entry.likes}</p>
