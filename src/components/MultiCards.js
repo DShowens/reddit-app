@@ -1,6 +1,10 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchReddit } from "../redux/redditSlice";
+import { currentReddit, isLoading } from "../redux/redditSlice";
 
 
-export const tempPlaceholder = [{
+export const temp = [{
     title: "Temp1",
     author: "Me",
     likes: 5,
@@ -34,10 +38,28 @@ export const tempPlaceholder = [{
 }
 ];
 
+
+
 function MultiCards() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchReddit());
+        
+    },[dispatch])
+
+
+    const state = useSelector(currentReddit);
+    const loading = useSelector(isLoading);
+    console.log('current Reddit state: ', state.data);
+    console.log('Loading state: ', loading);
+
+    if(loading) {
+        return <div> loading state </div>
+    }
+ 
     return (
         <div className="multi-cards">
-            {tempPlaceholder.map(entry => (
+             {/* {temp.map(entry => (
                 <div className="card" key={entry.id}>
                     <p>Title: {entry.title}</p>
                     <p>Author: {entry.author}</p>
@@ -45,7 +67,24 @@ function MultiCards() {
                     <p>Comments = {entry.comments}</p>
                     <p>Picture Somewhere: {entry.pic}</p>
                 </div>
-            ))}
+            ))} */}
+                {/* {state.data.map(comment => (
+
+                <div className="card" key={comment.name}>
+                    <p>Title: {comment.title}</p>
+                    <p>Author: {comment.author}</p>
+                    <p>Comments: {comment.selftext}</p>
+                </div>
+             ))} */}
+             {/* <div>{if (!loading) {state.children.map(comment => {
+                for (let i=0; i<state.children.length; i++) {
+                    return (
+                        <div classname="card" key={i}>
+                            <p>Title: {comment[i].title}</p>
+                        </div>
+                    )
+                }})}}
+             </div> */}
         </div>
     )
 };
