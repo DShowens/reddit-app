@@ -18,7 +18,7 @@ code {
 }
 
 header {
-  background-color: hsla(0, 100%, 86%, 0.8); /* Why isn't this showing up */
+  background-color: hsla(0, 100%, 86%, 0.8);
   border: solid red 1px;
 }
 

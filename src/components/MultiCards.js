@@ -1,62 +1,55 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchReddit } from "../redux/redditSlice";
-import { currentReddit, isLoading } from "../redux/redditSlice";
 
 
-export const temp = [{
-    title: "Temp1",
-    author: "Me",
-    likes: 5,
-    comments: 25,
-    pic: "source location",
-    id: 1
-},
-{
-    title: "Temp2",
-    author: "You",
-    likes: 8,
-    comments: 21,
-    pic: "source location",
-    id: 2
-},
-{
-    title: "Temp3",
-    author: "Him",
-    likes: 1,
-    comments: 12,
-    pic: "source location",
-    id: 3
-},
-{
-    title: "Temp4",
-    author: "Her",
-    likes: 23,
-    comments: 35,
-    pic: "source location",
-    id: 4
-}
-];
-
-
+// export const temp = [{
+//     title: "Temp1",
+//     author: "Me",
+//     likes: 5,
+//     comments: 25,
+//     pic: "source location",
+//     id: 1
+// },
+// {
+//     title: "Temp2",
+//     author: "You",
+//     likes: 8,
+//     comments: 21,
+//     pic: "source location",
+//     id: 2
+// },
+// {
+//     title: "Temp3",
+//     author: "Him",
+//     likes: 1,
+//     comments: 12,
+//     pic: "source location",
+//     id: 3
+// },
+// {
+//     title: "Temp4",
+//     author: "Her",
+//     likes: 23,
+//     comments: 35,
+//     pic: "source location",
+//     id: 4
+// }
+// ];
 
 function MultiCards() {
+
+    const data = useSelector((state) => state.data);
+    const loading = useSelector((state) => state.isLoading);
+    const hasError = useSelector((state) => state.hasError);
+
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchReddit());
-        
-    },[dispatch])
+        dispatch(fetchReddit());    
+    },[])
+  
+    console.log(data);
 
-
-    const state = useSelector(currentReddit);
-    const loading = useSelector(isLoading);
-    console.log('current Reddit state: ', state.data);
-    console.log('Loading state: ', loading);
-
-    if(loading) {
-        return <div> loading state </div>
-    }
- 
     return (
         <div className="multi-cards">
              {/* {temp.map(entry => (
@@ -85,6 +78,17 @@ function MultiCards() {
                     )
                 }})}}
              </div> */}
+             {loading && <div>Loading...</div>}
+             {!loading && hasError ? <div>Error: {hasError}</div> : null}
+             {!loading && data ? (
+                <ul>
+                    {
+                        data.map(item => (
+                            <li key={item.id}>{item.title}</li>
+                        ))
+                    }
+                </ul>
+             ): null}
         </div>
     )
 };
